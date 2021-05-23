@@ -1,2 +1,2 @@
-# Vuejs3intro
+# Vue3intro
 Vue.js3の勉強のためのレポジトリ
