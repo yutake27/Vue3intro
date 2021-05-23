@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+    <div id="app" class="container">
+      <p>{{ message }}</p>
+      <div><hello /></div>
+    </div>
+    <script>
+      const appdata = {
+        data() {
+          return {
+            message: "show component",
+            name: "no-name",
+          };
+        },
+      };
+      let app = Vue.createApp(appdata);
+      app.component("hello", {
+        data() {
+          return {
+            counter: 0,
+            isInfo: true,
+            isDark: false,
+          };
+        },
+        methods: {
+          doAction() {
+            this.counter++;
+            console.log("counter");
+            if (this.counter % 2 == 0) {
+              this.isInfo = true;
+              this.isDark = false;
+            } else {
+              this.isInfo = false;
+              this.isDark = true;
+            }
+          },
+        },
+        template:
+          '<p v-on:click="doAction" v-bind:class="{\'alert-warning\': isInfo, \'alert-dark\': isDark}" class="alert">clicked: {{ counter }}.</p>',
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

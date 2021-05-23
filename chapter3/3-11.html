@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+    <div id="app" class="container">
+      <p>{{ message }}</p>
+      <div><hello /></div>
+      <div><hello /></div>
+    </div>
+    <script>
+      const appdata = {
+        data() {
+          return {
+            message: "show component",
+          }
+        },
+        components: {
+          hello: {
+            data() {
+              return {
+                counter: 0,
+              }
+            },
+            template: `<p v-on:click="counter++"
+              class="alert alert-info h5">
+                clicked: {{counter}}.</p>`
+          }
+        }
+      }
+      let app = Vue.createApp(appdata);
+      app.mount("#app");
+    </script>
+  </body>
+</html>
