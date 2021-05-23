@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>My first Vue app</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <style>
+    .red {
+      font-size: 32px;
+      font-weight: plain;
+      font-style: normal;
+      color: red;
+    }
+    .blue {
+      font-size: 24px;
+      font-weight: bold;
+      font-style: italic;
+      color: blue;
+    }
+  </style>
+  <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+  <div id="app" class="container">
+    <p v-bind:class="{red: isRed, blue:isBlue}">
+      {{ message }}
+    </p>
+  </div>
+
+  <script>
+  const appdata = {
+    data() {
+      return {
+        message: null,
+        isRed: true,
+        isBlue: false
+      }
+    },
+    mounted() {
+      this.message = 'This is a sample page.'
+      setInterval(() => {
+        this.isBlue = !this.isBlue
+        this.isRed = !this.isRed
+      }, 1000)
+    }
+  }
+  Vue.createApp(appdata).mount('#app')
+  </script>
+</body>
+</html>

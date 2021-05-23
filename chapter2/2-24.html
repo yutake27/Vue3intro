@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>My first Vue app</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+  <div id="app" class="container">
+    <template v-if="flag">
+      <p>show data by table</p>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr><th>Name</th><th>mail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Taro</td><td>taro@yamada</td></tr>
+          <tr><td>Hanako</td><td>hanako@flower</td></tr>
+          <tr><td>Sachiko</td><td>sachiko@happy</td></tr>
+        </tbody>
+      </table>
+    </template>
+    <template v-else>
+      <p>show data by list</p>
+      <ul class="list-group">
+        <li class="list-group-item"> Taro adress : taro@yamada</li>
+        <li class="list-group-item"> Hanako adress: hanako@flower</li>
+      </ul>
+    </template>
+  </div>
+
+  <script>
+  const appdata = {
+    data() {
+      return {
+        flag: true
+      }
+    },
+    mounted() {
+      setInterval(() => {
+        this.flag = !this.flag
+      }, 1000)
+    }
+  }
+  Vue.createApp(appdata).mount('#app')
+  </script>
+</body>
+</html>
