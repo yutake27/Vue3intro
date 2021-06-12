@@ -20,7 +20,7 @@ propsにタイプを設定するのではなく，オブジェクトを設定で
 そこにrequired, default, validatorなどを設定できる．
 
 ### 算術プロパティのGetter, Setter
-算出プロパティでも値の更新をすることが可能．
+算出プロパティ(`computed`)でも値の更新をすることが可能．
 
 算出プロパティに直接関数を設定する場合は自動でGetterとして処理が行われる．
 
@@ -108,3 +108,74 @@ Setterは引数を受け取って値をSetすることができる．
 ```html
 <slot name="name" />
 ```
+
+
+## Chapter 4-5
+トランジションとアニメーション
+
+### フェードイン，フェードアウト
+スタイルで指定する．
+```html
+<style>
+.name-enter-active {
+  transition: opacity 0.5s
+}
+.name-leave-active {
+  transition: opacity 5.0s;
+}
+.name-enter {
+  opacity: 0;
+}
+.name-enter-to {
+  opacity: 1.0;
+}
+.name-leave {
+  opacity: 1.0;
+}
+.name-leave-to {
+  opacity: 0;
+}
+</style>
+```
+`name-enter`, で現れる時，`name-leave`で消える時のスタイルを記述できる．(nameはhtml内のnameタグでつける名前)
+
+
+### transitionのイベント
+* before-enter
+* enter
+* after-enter
+* enter-cancelled
+* before-leave
+* leave
+* after-leave
+* leave-cancelled
+
+### transformで動かす
+```html
+<style>
+.name-enter {
+  transform: translateX(200px)
+}
+</style>
+```
+のようにtransformを設定することが動かすことができる．
+
+### animation
+複雑なアニメーションも作成可能．
+
+```css
+animation: key-frame time;
+
+@keyframes key-frame {
+  0% {
+    hoge
+  }
+  50% {
+    fuga
+  }
+  100% {
+    piyo
+  }
+}
+```
+このように`@keyframes`で細かい進行状況に応じた処理を行うことができる．
